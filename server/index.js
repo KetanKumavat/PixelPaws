@@ -24,7 +24,7 @@ app.get("/", async (req, res) => {
   });
 });
 
-cron.schedule("*/35 * * * *", async () => {
+cron.schedule("*/12 * * * *", async () => {
   try {
     await axios.get("https://pixelpaws-wp-project.onrender.com");
     console.log("Server woke up successfully");
