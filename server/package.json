@@ -18,6 +18,7 @@
     "dotenv": "^16.0.3",
     "express": "^4.21.1",
     "mongoose": "^6.8.2",
+    "node-cron": "^3.0.3",
     "node-fetch": "^3.3.2",
     "nodemon": "^2.0.20",
     "openai": "^3.1.0"

@@ -1,6 +1,8 @@
 import express from "express";
 import * as dotenv from "dotenv";
 import cors from "cors";
+import cron from "node-cron";
+import axios from "axios";
 
 import connectDB from "./mongodb/connect.js";
 import postRoutes from "./routes/postRoutes.js";
@@ -18,8 +20,17 @@ app.use("/api/v1/dalle", dalleRoutes);
 
 app.get("/", async (req, res) => {
   res.status(200).json({
-    message: "Hello from DALL.E!",
+    message: "Server is up and running!",
   });
+});
+
+cron.schedule("*/35 * * * *", async () => {
+  try {
+    await axios.get("https://pixelpaws-wp-project.onrender.com");
+    console.log("Server woke up successfully");
+  } catch (error) {
+    console.log("Failed to wake up server");
+  }
 });
 
 const startServer = async () => {

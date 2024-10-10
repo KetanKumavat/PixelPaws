@@ -19,6 +19,35 @@ const Home = () => {
   const [searchText, setSearchText] = useState("");
   const [searchTimeout, setSearchTimeout] = useState(null);
   const [searchedResults, setSearchedResults] = useState(null);
+  const [cuteText, setCuteText] = useState("");
+
+  const cuteTexts = [
+    "Good things take time",
+    "Patience is a virtue",
+    "Hang tight, magic is happening",
+    "Great things are worth waiting for",
+    "Almost there, stay tuned",
+    "The best is yet to come",
+    "It's worth the wait (mostly)",
+    "Cute things take time",
+  ];
+
+  useEffect(() => {
+    if (loading) {
+      const interval = setInterval(() => {
+        const randomText =
+          cuteTexts[Math.floor(Math.random() * cuteTexts.length)];
+        setCuteText(randomText);
+      }, 5000);
+
+      // Set an initial cute text immediately
+      const initialText =
+        cuteTexts[Math.floor(Math.random() * cuteTexts.length)];
+      setCuteText(initialText);
+
+      return () => clearInterval(interval);
+    }
+  }, [loading]);
 
   const fetchPosts = async () => {
     setLoading(true);
@@ -26,6 +55,7 @@ const Home = () => {
     try {
       const response = await fetch(
         "https://pixelpaws-wp-project.onrender.com/api/v1/post",
+        // "http://localhost:5000/api/v1/post",
         {
           method: "GET",
           headers: {
@@ -66,9 +96,9 @@ const Home = () => {
   };
 
   return (
-    <section className="max-w-7xl mx-auto">
+    <section className="max-w-7xl mx-auto z-0">
       <div>
-        <h1 className="font-extrabold text-[#222328] text-[50px]">
+        <h1 className="font-extrabold text-[#222328] text-[55px]">
           PixelPaws Community
         </h1>
         <p className="mt-2 text-[#666e75] text-[20px] max-w-[500px]">
@@ -90,14 +120,17 @@ const Home = () => {
 
       <div className="mt-10">
         {loading ? (
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center flex-col">
             <Loader />
+            <span className="mt-8 text-pink-500 text-[25px] flex ">
+              {cuteText}
+            </span>
           </div>
         ) : (
           <>
             {searchText && (
               <h2 className="font-medium text-[#666e75] text-xl mb-3">
-                Showing Resuls for{" "}
+                Showing Results for{" "}
                 <span className="text-[#222328]">{searchText}</span>:
               </h2>
             )}

@@ -1,5 +1,5 @@
-import FileSaver from 'file-saver';
-import { surpriseMePrompts } from '../constant';
+import FileSaver from "file-saver";
+import { surpriseMePrompts } from "../constant";
 
 export function getRandomPrompt(prompt) {
   const randomIndex = Math.floor(Math.random() * surpriseMePrompts.length);
@@ -11,5 +11,11 @@ export function getRandomPrompt(prompt) {
 }
 
 export async function downloadImage(_id, photo) {
-  FileSaver.saveAs(photo, `download-${_id}.jpg`);
+  try {
+    const response = await fetch(photo);
+    const blob = await response.blob();
+    FileSaver.saveAs(blob, `download-${_id}.jpg`);
+  } catch (error) {
+    console.error("Failed to download image", error);
+  }
 }
