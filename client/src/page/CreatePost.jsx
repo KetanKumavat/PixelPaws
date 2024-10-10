@@ -56,8 +56,8 @@ const CreatePost = () => {
       try {
         setGeneratingImg(true);
         const response = await fetch(
-          // "https://pixelpaws-wp-project.onrender.com/api/v1/dalle",
-          "http://localhost:5000/api/v1/dalle",
+          "https://pixelpaws-wp-project.onrender.com/api/v1/dalle",
+          // "http://localhost:5000/api/v1/dalle",
           {
             method: "POST",
             headers: {
