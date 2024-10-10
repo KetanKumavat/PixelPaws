@@ -18,7 +18,13 @@ router.route("/").post(async (req, res) => {
 
     // Call the Hugging Face API to generate the image
     const response = await fetch(
-      "https://api-inference.huggingface.co/models/XLabs-AI/flux-RealismLora",
+      // nice images but slow
+      // "https://api-inference.huggingface.co/models/XLabs-AI/flux-RealismLora",
+
+      // fast but not so nice images (blurry)
+      // "https://api-inference.huggingface.co/models/stable-diffusion-v1-5/stable-diffusion-v1-5",
+
+      process.env.MODEL,
       {
         headers: {
           Authorization: `Bearer ${process.env.HUGGINGFACE_TOKEN}`,

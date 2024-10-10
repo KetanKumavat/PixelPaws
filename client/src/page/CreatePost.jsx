@@ -56,7 +56,8 @@ const CreatePost = () => {
       try {
         setGeneratingImg(true);
         const response = await fetch(
-          "https://pixelpaws-wp-project.onrender.com/api/v1/dalle",
+          // "https://pixelpaws-wp-project.onrender.com/api/v1/dalle",
+          "http://localhost:5000/api/v1/dalle",
           {
             method: "POST",
             headers: {
@@ -113,7 +114,9 @@ const CreatePost = () => {
   return (
     <section className="max-w-7xl mx-auto p-8 bg-white rounded-lg shadow-lg font-poppins">
       <div>
-        <h1 className="font-extrabold text-pink-600 text-[32px]">Create</h1>
+        <h1 className="font-extrabold text-pink-600 text-[32px]">
+          Create A Post
+        </h1>
         <p className="mt-2 text-pink-500 text-[14px] max-w-[500px]">
           Generate an imaginative image through AI and share it with the
           community
