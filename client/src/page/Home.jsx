@@ -54,7 +54,7 @@ const Home = () => {
 
     try {
       const response = await fetch(
-        "https://pixelpaws-wp-project.onrender.com/api/v1/post",
+        `${import.meta.env.VITE_BASE_URL}/api/v1/post`,
         // "http://localhost:5000/api/v1/post",
         {
           method: "GET",

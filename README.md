@@ -15,7 +15,7 @@ Welcome to PixelPaws, an AI-powered image generation application that allows use
 
 ## Features
 
-- **AI-Powered Image Generation**: Generate unique and imaginative images using DALL-E AI.
+- **AI-Powered Image Generation**: Generate unique and imaginative images using AI.
 - **Surprise Me**: Get random prompts to inspire your creativity.
 - **Share with Community**: Share your generated images with the community.
 - **Responsive Design**: Enjoy a seamless experience on both desktop and mobile devices.

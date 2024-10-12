@@ -5,11 +5,11 @@ import "react-toastify/dist/ReactToastify.css";
 import { getRandomPrompt } from "../utils";
 import { FormField, Loader } from "../components";
 
-const CreatePost = () => {
+const CreatePost = ({ name }) => {
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
-    name: "",
+    name: name || "",
     prompt: "",
     photo: "",
   });
@@ -51,13 +51,10 @@ const CreatePost = () => {
 
   const generateImage = async () => {
     if (form.prompt) {
-      console.log("Generating image...");
-      console.log(JSON.stringify(form.prompt));
       try {
         setGeneratingImg(true);
         const response = await fetch(
-          "https://pixelpaws-wp-project.onrender.com/api/v1/dalle",
-          // "http://localhost:5000/api/v1/dalle",
+          `${import.meta.env.VITE_BASE_URL}/api/v1/dalle`,
           {
             method: "POST",
             headers: {
@@ -88,7 +85,7 @@ const CreatePost = () => {
       setLoading(true);
       try {
         const response = await fetch(
-          "https://pixelpaws-wp-project.onrender.com/api/v1/post",
+          `${import.meta.env.VITE_BASE_URL}/api/v1/post`,
           {
             method: "POST",
             headers: {
