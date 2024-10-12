@@ -37,26 +37,26 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <header className="w-full flex justify-between items-center bg-pink-700 sm:px-8 px-4 py-2 shadow-xl shadow-black/25 sticky top-0 z-10">
+      <header className="w-full flex flex-wrap justify-between items-center bg-pink-700 sm:px-8 px-4 py-2 shadow-xl shadow-black/25 sticky top-0 z-10">
         <Link
           to="/"
           className="flex items-center space-x-2 text-white font-bold text-xl">
-          <img src={logo} alt="logo" className="w-20 h-20 object-cover" />
-          <span className="text-3xl">PixelPaws</span>
+          <img src={logo} alt="logo" className="w-16 h-16 object-cover" />
+          <span className="text-2xl sm:text-3xl">PixelPaws</span>
         </Link>
-        <div className="gap-2 flex justify-center">
+        <div className="flex items-center gap-2">
           <SignedIn>
             <Link
               to="/create-post"
-              className="font-medium bg-white hover:bg-gray-200 text-pink-600 px-4 py-2 rounded-md transition-colors duration-300">
+              className="font-medium bg-white hover:bg-gray-200 text-pink-600 px-3 py-1 sm:px-4 sm:py-2 rounded-md transition-colors duration-300">
               Create
             </Link>
             <UserButton />
           </SignedIn>
+          <SignedOut>
+            <SignInButton className="font-medium bg-white hover:bg-gray-200 text-pink-600 px-3 py-1 sm:px-4 sm:py-2 rounded-md transition-colors duration-300" />
+          </SignedOut>
         </div>
-        <SignedOut>
-          <SignInButton className="font-medium bg-white hover:bg-gray-200 text-pink-600 px-4 py-2 rounded-md transition-colors duration-300" />
-        </SignedOut>
       </header>
       <main className="sm:p-8 px-4 py-8 w-full bg-stone-50 min-h-[calc(100vh-73px)]">
         <Routes>
